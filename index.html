@@ -9,22 +9,37 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
     <style>
-        :root { --orange: #ff6600; --black: #0d0d0d; --gray: #1a1a1a; }
-        body { background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 40px 20px; direction: rtl; text-align: center; }
-        .container { max-width: 1200px; width: 95%; background: var(--gray); padding: 50px; border-radius: 40px; border: 1px solid #333; margin: auto; box-shadow: 0 0 60px rgba(255, 102, 0, 0.2); }
-        .brand-name { color: var(--orange); font-size: clamp(3rem, 10vw, 5.5rem); letter-spacing: 5px; margin: 0; text-shadow: 4px 4px 15px rgba(0,0,0,0.7); }
-        .input-options { margin: 30px 0; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
-        .input-options button { background: transparent; color: var(--orange); border: 3px solid var(--orange); padding: 15px 40px; border-radius: 15px; font-size: 1.4rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        :root { --orange: #ff6600; --black: #050505; --gray: #111111; }
+        body { background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 50px 20px; direction: rtl; }
+        
+        /* تصميم الواجهة الفخمة */
+        .container { max-width: 1300px; width: 95%; background: var(--gray); padding: 60px; border-radius: 40px; border: 1px solid #222; margin: auto; box-shadow: 0 0 100px rgba(255, 102, 0, 0.15); text-align: center; }
+        
+        .brand-name { color: var(--orange); font-size: clamp(4rem, 12vw, 7.5rem); letter-spacing: 8px; margin: 0; text-shadow: 5px 5px 20px rgba(0,0,0,0.8); font-weight: 900; }
+        
+        /* الزراير البرتقالية العملاقة */
+        .input-options { margin: 50px 0; display: flex; gap: 25px; justify-content: center; flex-wrap: wrap; }
+        .input-options button { background: transparent; color: var(--orange); border: 3px solid var(--orange); padding: 20px 60px; border-radius: 20px; font-size: 1.6rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .input-options button.active { background: var(--orange); color: #000; }
-        .upload-box { background: #000; border: 3px dashed var(--orange); padding: 30px; border-radius: 20px; margin-bottom: 20px; }
-        .text-input { width: 100%; padding: 20px; background: #000; border: 1px solid var(--orange); color: #fff; border-radius: 10px; font-size: 1.2rem; margin-bottom: 15px; box-sizing: border-box; }
-        textarea { width: 100%; height: 350px; background: #050505; color: #fff; border: 1px solid #444; border-radius: 20px; padding: 25px; font-size: 1.5rem; line-height: 1.8; box-sizing: border-box; }
-        .btn-primary { background: var(--orange); color: #000; border: none; padding: 25px 0; font-size: 2rem; border-radius: 20px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 30px; transition: 0.3s; }
-        .btn-primary:hover { transform: scale(1.01); background: #ff8533; }
-        .result-box { background: #000; padding: 35px; border-radius: 25px; margin-top: 40px; border-right: 12px solid var(--orange); text-align: right; min-height: 100px; }
-        .welcome-toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #000; padding: 15px 40px; border-radius: 50px; font-weight: bold; z-index: 1000; }
-        .badge { background: var(--orange); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
-        .error-msg { color: #ff4444; background: rgba(255, 68, 68, 0.1); padding: 15px; border-radius: 10px; margin-top: 10px; font-weight: bold; }
+
+        /* منطقة الإدخال */
+        .upload-box { background: #000; border: 4px dashed var(--orange); padding: 50px; border-radius: 30px; margin-bottom: 30px; }
+        .text-input { width: 100%; padding: 25px; background: #000; border: 1px solid var(--orange); color: #fff; border-radius: 15px; font-size: 1.4rem; margin-bottom: 20px; box-sizing: border-box;}
+        textarea { width: 100%; height: 450px; background: #000; color: #fff; border: 1px solid #333; border-radius: 30px; padding: 40px; font-size: 1.7rem; line-height: 1.9; box-sizing: border-box; }
+
+        .btn-primary { background: var(--orange); color: #000; border: none; padding: 30px 0; font-size: 2.5rem; border-radius: 30px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 40px; box-shadow: 0 15px 40px rgba(255, 102, 0, 0.3); transition: 0.3s; }
+        .btn-primary:hover { transform: scale(1.02); background: #ff8533; }
+        
+        /* منطقة النتائج */
+        .result-box { background: #000; padding: 55px; border-radius: 40px; margin-top: 50px; border-right: 15px solid var(--orange); text-align: right; font-size: 1.6rem; line-height: 2.2; }
+        
+        .welcome-toast { position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #000; padding: 20px 60px; border-radius: 70px; font-size: 1.8rem; z-index: 9999; font-weight: bold; }
+        .badge { background: var(--orange); color: #000; padding: 10px 25px; border-radius: 30px; font-weight: bold; font-size: 1.2rem; }
+        
+        .loader { border: 8px solid #222; border-top: 8px solid var(--orange); border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 30px auto; display: none; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        footer { margin-top: 100px; border-top: 1px solid #222; padding-top: 40px; }
     </style>
 </head>
 <body>
@@ -34,8 +49,7 @@
     <div class="container">
         <header>
             <h1 class="brand-name">SUCCESS PLAN</h1>
-            <p style="color: #888;">منصة يوسف صادق التعليمية الذكية</p>
-            <div id="statusBadge" class="badge">نظام AI جاهز</div>
+            <div id="statusBadge" class="badge">AI SYSTEM READY</div>
         </header>
 
         <div class="input-options">
@@ -49,30 +63,31 @@
         </div>
 
         <div id="pdfUploadArea" class="upload-box" style="display: none;">
-            <input type="file" id="pdfFile" accept=".pdf" style="color: #ff6600;">
+            <input type="file" id="pdfFile" accept=".pdf" style="color: #ff6600; font-weight: bold; font-size: 1.4rem;">
+            <p style="color: #666; margin-top: 15px;">ارفع الكتاب وسيتم التحليل تلقائياً</p>
         </div>
 
-        <textarea id="lessonInput" placeholder="ضع محتوى الدرس هنا..."></textarea>
+        <textarea id="lessonInput" placeholder="ضع محتوى الدرس هنا أو ارفع الملف..."></textarea>
 
-        <button id="submitBtn" onclick="askAI()" class="btn-primary">ابدأ التحليل الشامل ⚡</button>
+        <div id="aiLoader" class="loader"></div>
+        <button id="mainBtn" onclick="askAI()" class="btn-primary">تحليل ذكي شامل ⚡</button>
 
         <div id="resultSection" class="result-box">
-            <h3 style="color: var(--orange); margin-top: 0;">✨ الخلاصة والقواعد:</h3>
+            <h3 style="color: var(--orange); font-size: 2.5rem; margin-top: 0;">✨ الخلاصة والقواعد:</h3>
             <div id="aiOutput">بانتظار البيانات...</div>
         </div>
 
-        <footer style="margin-top: 50px; border-top: 1px solid #333; padding-top: 20px;">
-            <p style="color: #666;">SUCCESS PLAN - Developed by</p>
-            <h2 style="color: var(--orange); letter-spacing: 5px; margin: 0;">YOUSSEF SADEK</h2>
+        <footer>
+            <p style="color: #444; font-size: 1.3rem;">SUCCESS PLAN PLATFORM</p>
+            <h2 style="color: var(--orange); letter-spacing: 10px; font-size: 3rem; margin: 0;">YOUSSEF SADEK</h2>
         </footer>
     </div>
 
     <script>
-        // يوسف: ده المفتاح الجديد اللي انت عملته وشغال (CKCI)
-        const API_KEY = "AIzaSyBp-4UZHTN2wgu-uftmxH-SkkBHcluCKCI"; 
+        const API_KEY = "AIzaSyAx34r5v35OkuM1VOofKULadKVA06xnJC8"; 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-        setTimeout(() => document.getElementById('welcomeMessage').style.display = 'none', 4000);
+        setTimeout(() => document.getElementById('welcomeMessage').style.display = 'none', 5000);
 
         function switchInput(type) {
             document.getElementById('pdfUploadArea').style.display = (type === 'pdf') ? 'block' : 'none';
@@ -86,53 +101,45 @@
             const text = document.getElementById('lessonInput').value;
             const video = document.getElementById('videoUrl').value;
             const output = document.getElementById('aiOutput');
-            const btn = document.getElementById('submitBtn');
             const badge = document.getElementById('statusBadge');
+            const loader = document.getElementById('aiLoader');
+            const mainBtn = document.getElementById('mainBtn');
             
             let inputContent = (document.getElementById('videoUrlArea').style.display === 'block') ? video : text;
             if(!inputContent || inputContent.trim().length < 5) return alert("دخل البيانات الأول يا بطل!");
 
-            btn.disabled = true;
-            btn.innerText = "جاري التحليل... ⏳";
-            badge.innerText = "يوسف يحلل بذكاء...";
-            output.innerHTML = "جاري الاتصال بذكاء جوجل...";
+            loader.style.display = 'block';
+            mainBtn.disabled = true;
+            badge.innerText = "YOUSSEF AI IS THINKING...";
+            output.innerHTML = "جاري تحليل المحتوى بالكامل...";
 
             try {
                 const response = await fetch(API_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: `أنت خبير تعليمي. لخص بوضوح واستخرج القواعد من: ${inputContent}` }] }]
+                        "contents": [{ "parts": [{ "text": `بصفتك خبير تعليمي لمنصة Success Plan، لخص هذا المحتوى واستخرج القواعد منه بوضوح تام: ${inputContent}` }] }]
                     })
                 });
 
                 const data = await response.json();
 
-                // فحص الأخطاء من جوجل
-                if (data.error) {
-                    let errorMsg = "حدث خطأ في المفتاح: ";
-                    if (data.error.status === "PERMISSION_DENIED") errorMsg = "المفتاح غير مفعل أو ممنوع. تأكد من إعدادات API Key في Google AI Studio.";
-                    else if (data.error.status === "API_KEY_INVALID") errorMsg = "المفتاح غلط. انسخه تاني صح.";
-                    throw new Error(errorMsg);
-                }
-
                 if (data.candidates && data.candidates[0].content) {
                     const resText = data.candidates[0].content.parts[0].text;
                     output.innerHTML = resText.replace(/\n/g, "<br>").replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-                    badge.innerText = "اكتمل بنجاح ✅";
-                } else {
-                    throw new Error("رد غير متوقع من النظام.");
+                    badge.innerText = "ANALYSIS COMPLETE ✅";
+                } else if (data.error) {
+                    throw new Error(data.error.message);
                 }
             } catch(e) { 
-                output.innerHTML = `<div class="error-msg">⚠️ ${e.message}</div>`;
-                badge.innerText = "فشل الاتصال ❌";
+                output.innerHTML = `<div style="color: #ff4444;">⚠️ خطأ في الاتصال: ${e.message}</div>`;
+                badge.innerText = "CONNECTION FAILED ❌";
             } finally {
-                btn.disabled = false;
-                btn.innerText = "ابدأ التحليل الشامل ⚡";
+                loader.style.display = 'none';
+                mainBtn.disabled = false;
             }
         }
 
-        // قراءة PDF
         document.getElementById('pdfFile').addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
