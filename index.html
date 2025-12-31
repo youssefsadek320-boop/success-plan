@@ -4,129 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Success Plan | Youssef Sadek</title>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <style>
         :root { --orange: #ff6600; --black: #050505; --gray: #111111; }
-        body { background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 50px 20px; direction: rtl; text-align: center; }
-        .container { max-width: 1250px; width: 95%; background: var(--gray); padding: 50px; border-radius: 40px; border: 1px solid #222; margin: auto; box-shadow: 0 0 80px rgba(255, 102, 0, 0.2); }
-        .brand-name { color: var(--orange); font-size: 5.5rem; letter-spacing: 5px; margin: 0; font-weight: 900; text-shadow: 4px 4px 15px rgba(0,0,0,0.7); }
-        .input-options { margin: 40px 0; display: flex; gap: 20px; justify-content: center; }
-        .input-options button { background: transparent; color: var(--orange); border: 3px solid var(--orange); padding: 15px 45px; border-radius: 15px; font-size: 1.4rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
-        .input-options button.active { background: var(--orange); color: #000; }
-        textarea { width: 100%; height: 400px; background: #000; color: #fff; border: 1px solid #333; border-radius: 25px; padding: 35px; font-size: 1.6rem; line-height: 1.8; box-sizing: border-box; margin-top: 20px; }
-        .btn-primary { background: var(--orange); color: #000; border: none; padding: 25px 0; font-size: 2.2rem; border-radius: 25px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 40px; box-shadow: 0 10px 30px rgba(255,102,0,0.3); }
-        .result-box { background: #000; padding: 45px; border-radius: 35px; margin-top: 40px; border-right: 12px solid var(--orange); text-align: right; font-size: 1.5rem; line-height: 2; }
-        .loader { border: 6px solid #222; border-top: 6px solid var(--orange); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 20px auto; display: none; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        footer { margin-top: 80px; border-top: 1px solid #222; padding-top: 30px; }
+        body { background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 40px 20px; direction: rtl; text-align: center; }
+        
+        .container { max-width: 1300px; width: 95%; background: var(--gray); padding: 40px; border-radius: 40px; border: 1px solid #222; margin: auto; box-shadow: 0 0 80px rgba(255, 102, 0, 0.2); }
+        .brand-name { color: var(--orange); font-size: clamp(3rem, 10vw, 6rem); letter-spacing: 5px; margin: 0; font-weight: 900; text-shadow: 4px 4px 15px rgba(0,0,0,0.7); }
+        
+        .instruction-box { background: #000; padding: 25px; border-radius: 20px; margin: 30px 0; border: 1px solid var(--orange); line-height: 1.8; font-size: 1.2rem; }
+        
+        /* نافذة الذكاء الاصطناعي المدمجة */
+        .ai-frame-container { width: 100%; height: 700px; border-radius: 30px; overflow: hidden; border: 3px solid var(--orange); margin-top: 30px; background: #fff; }
+        iframe { width: 100%; height: 100%; border: none; }
+
+        .btn-primary { background: var(--orange); color: #000; border: none; padding: 20px 50px; border-radius: 15px; font-size: 1.5rem; font-weight: bold; cursor: pointer; margin: 20px 5px; transition: 0.3s; text-decoration: none; display: inline-block; }
+        .btn-primary:hover { transform: scale(1.05); background: #ff8533; }
+
+        footer { margin-top: 60px; border-top: 1px solid #333; padding-top: 30px; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1 class="brand-name">SUCCESS PLAN</h1>
-        <p style="color: #888; font-size: 1.3rem;">نظام الذكاء الاصطناعي المتقدم</p>
+        <header>
+            <h1 class="brand-name">SUCCESS PLAN</h1>
+            <p style="color: #888; font-size: 1.4rem;">منصة يوسف صادق التعليمية - المساعد الذكي المباشر</p>
+        </header>
 
-        <div class="input-options">
-            <button onclick="switchInput('text')" id="btnText" class="active">نص مباشر</button>
-            <button onclick="switchInput('pdf')" id="btnPdf">ملف PDF</button>
+        <div class="instruction-box">
+            <h3 style="color: var(--orange); margin-top: 0;">💡 كيف تستخدم المنصة؟</h3>
+            <ol style="text-align: right; display: inline-block;">
+                <li>قم بنسخ محتوى الدرس أو القوانين التي تريد تلخيصها.</li>
+                <li>الصق النص في نافذة المحادثة بالأسفل واطلب من المساعد (لخص هذا الدرس).</li>
+                <li>يمكنك أيضاً رفع ملفات PDF مباشرة داخل النافذة.</li>
+            </ol>
         </div>
 
-        <div id="pdfArea" style="display:none; margin-bottom: 20px; background: #000; padding: 20px; border-radius: 20px; border: 2px dashed var(--orange);">
-            <input type="file" id="pdfFile" accept=".pdf" style="color:var(--orange); font-weight: bold; font-size: 1.2rem;">
+        <div class="quick-links">
+            <a href="https://huggingface.co/chat/" target="_blank" class="btn-primary">فتح المساعد في نافذة كبيرة 🚀</a>
         </div>
 
-        <textarea id="lessonInput" placeholder="ضع نص الدرس هنا للبدء..."></textarea>
-
-        <div id="aiLoader" class="loader"></div>
-        <button id="mainBtn" onclick="askHuggingFace()" class="btn-primary">تحليل ذكي شامل ⚡</button>
-
-        <div id="resultSection" class="result-box">
-            <h3 style="color: var(--orange); font-size: 2rem;">✨ الخلاصة والتحليل:</h3>
-            <div id="aiOutput">بانتظار البيانات...</div>
+        <div class="ai-frame-container">
+            <iframe src="https://huggingface.co/chat/" title="AI Assistant"></iframe>
         </div>
 
         <footer>
             <h2 style="color: var(--orange); letter-spacing: 10px; font-size: 2.5rem; margin: 0;">YOUSSEF SADEK</h2>
+            <p style="color: #444; margin-top: 10px;">&copy; 2025 SUCCESS PLAN - ALL RIGHTS RESERVED</p>
         </footer>
     </div>
 
-    <script>
-        // استخدام موديل Bloom الأصغر والأسرع لضمان الاتصال
-        const MODEL_URL = "https://api-inference.huggingface.co/models/bigscience/bloom-560m";
-        
-        // يوسف: هذا التوكن عام للتجربة، يفضل إنشاء واحد خاص بك لاحقاً
-        const HF_TOKEN = "hf_vRAnHqZkYfHwXNlBvYyKzXwZzXwZzXwZz"; 
-
-        function switchInput(type) {
-            document.getElementById('pdfArea').style.display = (type === 'pdf') ? 'block' : 'none';
-            document.querySelectorAll('.input-options button').forEach(b => b.classList.remove('active'));
-            document.getElementById('btn' + type.charAt(0).toUpperCase() + type.slice(1)).classList.add('active');
-        }
-
-        async function askHuggingFace() {
-            const text = document.getElementById('lessonInput').value;
-            const output = document.getElementById('aiOutput');
-            const loader = document.getElementById('aiLoader');
-            const mainBtn = document.getElementById('mainBtn');
-
-            if(!text || text.length < 5) return alert("أدخل النص أولاً!");
-
-            loader.style.display = 'block';
-            mainBtn.disabled = true;
-            output.innerHTML = "جاري الاتصال بالخادم الذكي...";
-
-            try {
-                const response = await fetch(MODEL_URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        inputs: "لخص هذا النص التعليمي بوضوح: " + text,
-                        parameters: { max_new_tokens: 250, temperature: 0.7 }
-                    })
-                });
-
-                if (!response.ok) throw new Error("Connection failed");
-
-                const data = await response.json();
-                
-                if (Array.isArray(data) && data[0].generated_text) {
-                    let result = data[0].generated_text.replace("لخص هذا النص التعليمي بوضوح: " + text, "");
-                    output.innerHTML = result.trim() || "اكتملت المعالجة، يرجى مراجعة النص.";
-                } else {
-                    output.innerHTML = "النظام مشغول حالياً، يرجى المحاولة بعد لحظات.";
-                }
-
-            } catch (e) {
-                output.innerHTML = "<span style='color: #ff4444;'>⚠️ حدث خطأ في الشبكة. يرجى التأكد من اتصال الإنترنت وتحديث الصفحة.</span>";
-            } finally {
-                loader.style.display = 'none';
-                mainBtn.disabled = false;
-            }
-        }
-
-        document.getElementById('pdfFile').addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            if (!file) return;
-            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-            const reader = new FileReader();
-            reader.onload = async function() {
-                const typedarray = new Uint8Array(this.result);
-                const pdf = await pdfjsLib.getDocument(typedarray).promise;
-                let fullText = "";
-                for (let i = 1; i <= pdf.numPages; i++) {
-                    const page = await pdf.getPage(i);
-                    const content = await page.getTextContent();
-                    fullText += content.items.map(s => s.str).join(" ") + " \n";
-                }
-                document.getElementById('lessonInput').value = fullText.trim();
-                askHuggingFace();
-            };
-            reader.readAsArrayBuffer(file);
-        });
-    </script>
 </body>
 </html>
