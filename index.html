@@ -6,33 +6,25 @@
     <title>Success Plan | Youssef Sadek</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
     <style>
-        /* --- هنا كل أكواد الـ CSS (التنسيق) --- */
         :root { --orange: #ff6600; --black: #0d0d0d; --gray: #1a1a1a; }
-        body { background: var(--black); color: white; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 60px 20px; direction: rtl; text-align: center; }
-        .container { max-width: 1300px; width: 95%; background: var(--gray); padding: 50px; border-radius: 40px; border: 1px solid #333; margin: auto; box-shadow: 0 0 80px rgba(255, 102, 0, 0.2); }
-        .brand-name { color: var(--orange); font-size: 6rem; letter-spacing: 5px; margin: 0; text-shadow: 4px 4px 20px rgba(0,0,0,0.8); font-weight: 900; }
-        .input-options { margin: 40px 0; display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; }
-        .input-options button { background: transparent; color: var(--orange); border: 4px solid var(--orange); padding: 20px 60px; border-radius: 20px; font-size: 1.8rem; font-weight: bold; cursor: pointer; transition: 0.3s ease; }
+        body { background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 40px 20px; direction: rtl; text-align: center; }
+        .container { max-width: 1200px; width: 95%; background: var(--gray); padding: 50px; border-radius: 40px; border: 1px solid #333; margin: auto; box-shadow: 0 0 60px rgba(255, 102, 0, 0.2); }
+        .brand-name { color: var(--orange); font-size: clamp(3rem, 10vw, 5.5rem); letter-spacing: 5px; margin: 0; text-shadow: 4px 4px 15px rgba(0,0,0,0.7); }
+        .input-options { margin: 30px 0; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .input-options button { background: transparent; color: var(--orange); border: 3px solid var(--orange); padding: 15px 40px; border-radius: 15px; font-size: 1.4rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .input-options button.active { background: var(--orange); color: #000; }
-        .upload-box { background: #000; border: 4px dashed var(--orange); padding: 50px; border-radius: 30px; margin-bottom: 30px; }
-        .text-input { width: 100%; padding: 25px; background: #000; border: 2px solid var(--orange); color: #fff; border-radius: 15px; font-size: 1.5rem; margin-bottom: 20px; box-sizing: border-box; }
-        textarea { width: 100%; height: 450px; background: #050505; color: #fff; border: 1px solid #444; border-radius: 30px; padding: 35px; font-size: 1.8rem; line-height: 1.8; box-sizing: border-box; }
-        .btn-primary { background: var(--orange); color: #000; border: none; padding: 30px 0; font-size: 2.5rem; border-radius: 30px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 40px; box-shadow: 0 10px 30px rgba(255, 102, 0, 0.4); }
-        .result-box { background: #000; padding: 50px; border-radius: 40px; margin-top: 50px; border-right: 15px solid var(--orange); text-align: right; font-size: 1.7rem; line-height: 2.2; }
-        .welcome-toast { position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #000; padding: 25px 80px; border-radius: 70px; font-size: 2rem; z-index: 9999; font-weight: bold; }
-        .badge { background: var(--orange); color: #000; padding: 8px 25px; border-radius: 30px; font-weight: bold; display: inline-block; font-size: 1.2rem; margin-top: 15px; }
-        footer { margin-top: 80px; border-top: 1px solid #444; padding-top: 30px; }
-        .loader { border: 8px solid #333; border-top: 8px solid var(--orange); border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; margin: 20px auto; display: none; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
-        /* تنسيق الكويز والنتيجة */
-        .result-card { margin-top: 30px; padding: 40px; border: 4px solid var(--orange); border-radius: 20px; text-align: center; background: #050505; }
-        .quiz-q { background: #000; padding: 15px; border-radius: 10px; margin-bottom: 10px; border-right: 4px solid var(--orange); text-align: right; margin-top: 15px; }
-        .quiz-q select { width: 100%; padding: 10px; background: #222; color: white; border: 1px solid #444; border-radius: 5px; font-size: 1.2rem; }
+        .upload-box { background: #000; border: 3px dashed var(--orange); padding: 30px; border-radius: 20px; margin-bottom: 20px; }
+        .text-input { width: 100%; padding: 20px; background: #000; border: 1px solid var(--orange); color: #fff; border-radius: 10px; font-size: 1.2rem; margin-bottom: 15px; box-sizing: border-box; }
+        textarea { width: 100%; height: 350px; background: #050505; color: #fff; border: 1px solid #444; border-radius: 20px; padding: 25px; font-size: 1.5rem; line-height: 1.8; box-sizing: border-box; }
+        .btn-primary { background: var(--orange); color: #000; border: none; padding: 25px 0; font-size: 2rem; border-radius: 20px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .btn-primary:hover { transform: scale(1.01); background: #ff8533; }
+        .result-box { background: #000; padding: 35px; border-radius: 25px; margin-top: 40px; border-right: 12px solid var(--orange); text-align: right; min-height: 100px; }
+        .welcome-toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--orange); color: #000; padding: 15px 40px; border-radius: 50px; font-weight: bold; z-index: 1000; }
+        .badge { background: var(--orange); color: #000; padding: 5px 15px; border-radius: 20px; font-weight: bold; font-size: 0.9rem; }
+        .error-msg { color: #ff4444; background: rgba(255, 68, 68, 0.1); padding: 15px; border-radius: 10px; margin-top: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -42,8 +34,8 @@
     <div class="container">
         <header>
             <h1 class="brand-name">SUCCESS PLAN</h1>
-            <p style="color: #aaa; font-size: 1.5rem; margin-top: 10px;">بوابة يوسف صادق للتعلم الذكي</p>
-            <div id="statusBadge" class="badge">نظام AI جاهز للعمل</div>
+            <p style="color: #888;">منصة يوسف صادق التعليمية الذكية</p>
+            <div id="statusBadge" class="badge">نظام AI جاهز</div>
         </header>
 
         <div class="input-options">
@@ -53,50 +45,34 @@
         </div>
 
         <div id="videoUrlArea" class="upload-box" style="display: none;">
-            <input type="text" id="videoUrl" placeholder="الصق رابط فيديو يوتيوب هنا..." class="text-input">
+            <input type="text" id="videoUrl" placeholder="ضع رابط فيديو يوتيوب هنا..." class="text-input">
         </div>
 
         <div id="pdfUploadArea" class="upload-box" style="display: none;">
-            <input type="file" id="pdfFile" accept=".pdf" style="color: var(--orange); font-size: 1.5rem; font-weight: bold; cursor: pointer;">
+            <input type="file" id="pdfFile" accept=".pdf" style="color: #ff6600;">
         </div>
 
-        <textarea id="lessonInput" placeholder="اكتب محتوى الدرس هنا أو ارفع الملف..."></textarea>
+        <textarea id="lessonInput" placeholder="ضع محتوى الدرس هنا..."></textarea>
 
-        <div class="extra-options" style="margin-top:20px; text-align:right; font-size:1.3rem;">
-            <label><input type="checkbox" id="makeQuiz"> 📝 إنشاء اختبار (Quiz) وتصحيحه تلقائياً</label>
-        </div>
-
-        <div id="aiLoader" class="loader"></div>
-        <button onclick="askAI()" class="btn-primary">ابدأ التحليل الشامل ⚡</button>
+        <button id="submitBtn" onclick="askAI()" class="btn-primary">ابدأ التحليل الشامل ⚡</button>
 
         <div id="resultSection" class="result-box">
-            <h3 style="color: var(--orange); font-size: 2.4rem;">✨ الخلاصة والقواعد:</h3>
+            <h3 style="color: var(--orange); margin-top: 0;">✨ الخلاصة والقواعد:</h3>
             <div id="aiOutput">بانتظار البيانات...</div>
         </div>
 
-        <div id="quizSection" class="result-box" style="display:none;">
-            <h3 style="color: var(--orange); font-size: 2.4rem;">📝 الاختبار التفاعلي:</h3>
-            <div id="quizContainer"></div>
-            <button onclick="calculateFinalScore()" class="btn-primary" style="margin-top:20px; font-size:1.8rem;">تسليم الإجابات</button>
-        </div>
-
-        <div id="quizResultArea" class="result-card" style="display:none;">
-            <div id="resultEmoji" style="font-size: 70px;"></div>
-            <h2 id="scorePercent" style="font-size: 2.5rem; color: var(--orange);"></h2>
-            <p id="motivationalMessage" style="font-size: 2rem;"></p>
-        </div>
-
-        <footer>
-            <h2 style="color: var(--orange); letter-spacing: 8px; font-size: 2.8rem;">YOUSSEF SADEK</h2>
+        <footer style="margin-top: 50px; border-top: 1px solid #333; padding-top: 20px;">
+            <p style="color: #666;">SUCCESS PLAN - Developed by</p>
+            <h2 style="color: var(--orange); letter-spacing: 5px; margin: 0;">YOUSSEF SADEK</h2>
         </footer>
     </div>
 
     <script>
-        /* --- هنا كل أكواد الـ JavaScript (البرمجة) --- */
-        const API_KEY = "AIzaSyAx34r5v35OkuM1VOofKULadKVA06xnJC8"; 
+        // يوسف: ده المفتاح الجديد اللي انت عملته وشغال (CKCI)
+        const API_KEY = "AIzaSyBp-4UZHTN2wgu-uftmxH-SkkBHcluCKCI"; 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
 
-        setTimeout(() => document.getElementById('welcomeMessage').style.display = 'none', 5000);
+        setTimeout(() => document.getElementById('welcomeMessage').style.display = 'none', 4000);
 
         function switchInput(type) {
             document.getElementById('pdfUploadArea').style.display = (type === 'pdf') ? 'block' : 'none';
@@ -106,98 +82,57 @@
             document.getElementById('btn' + type.charAt(0).toUpperCase() + type.slice(1)).classList.add('active');
         }
 
-        let correctAnswers = [];
-
         async function askAI() {
-            const input = document.getElementById('lessonInput').value || document.getElementById('videoUrl').value;
-            const isQuiz = document.getElementById('makeQuiz').checked;
+            const text = document.getElementById('lessonInput').value;
+            const video = document.getElementById('videoUrl').value;
             const output = document.getElementById('aiOutput');
+            const btn = document.getElementById('submitBtn');
             const badge = document.getElementById('statusBadge');
-            const loader = document.getElementById('aiLoader');
-
-            if(!input) return alert("دخل البيانات الأول يا بطل!");
-
-            badge.innerText = "Success Plan يحلل الآن... 🧠";
-            loader.style.display = 'block';
-
-            let prompt = `أنت مساعد دراسة ذكي لمنصة Success Plan. حلل المحتوى: "${input}". 
-            1. لخصه بوضوح واستخرج القواعد.`;
             
-            if(isQuiz) prompt += `\n2. أنشئ كويز 5 أسئلة اختيار من متعدد. في نهاية الرد ضع الإجابات بهذا الشكل فقط: [ANS: 1,0,2,1,0]`;
+            let inputContent = (document.getElementById('videoUrlArea').style.display === 'block') ? video : text;
+            if(!inputContent || inputContent.trim().length < 5) return alert("دخل البيانات الأول يا بطل!");
+
+            btn.disabled = true;
+            btn.innerText = "جاري التحليل... ⏳";
+            badge.innerText = "يوسف يحلل بذكاء...";
+            output.innerHTML = "جاري الاتصال بذكاء جوجل...";
 
             try {
                 const response = await fetch(API_URL, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: `أنت خبير تعليمي. لخص بوضوح واستخرج القواعد من: ${inputContent}` }] }]
+                    })
                 });
+
                 const data = await response.json();
-                const resText = data.candidates[0].content.parts[0].text;
-                
-                output.innerHTML = resText.split('[ANS:')[0].replace(/\n/g, "<br>").replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
-                
-                if(isQuiz && resText.includes('[ANS:')) {
-                    const ansMatch = resText.match(/\[ANS:\s*(.*?)\]/);
-                    if(ansMatch) {
-                        correctAnswers = ansMatch[1].split(',').map(n => n.trim());
-                        renderQuizUI();
-                    }
+
+                // فحص الأخطاء من جوجل
+                if (data.error) {
+                    let errorMsg = "حدث خطأ في المفتاح: ";
+                    if (data.error.status === "PERMISSION_DENIED") errorMsg = "المفتاح غير مفعل أو ممنوع. تأكد من إعدادات API Key في Google AI Studio.";
+                    else if (data.error.status === "API_KEY_INVALID") errorMsg = "المفتاح غلط. انسخه تاني صح.";
+                    throw new Error(errorMsg);
                 }
-                badge.innerText = "اكتمل التحليل ✅";
+
+                if (data.candidates && data.candidates[0].content) {
+                    const resText = data.candidates[0].content.parts[0].text;
+                    output.innerHTML = resText.replace(/\n/g, "<br>").replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+                    badge.innerText = "اكتمل بنجاح ✅";
+                } else {
+                    throw new Error("رد غير متوقع من النظام.");
+                }
             } catch(e) { 
-                output.innerHTML = "حدث خطأ في الاتصال!";
-                badge.innerText = "خطأ ❌";
-            } finally { loader.style.display = 'none'; }
-        }
-
-        function renderQuizUI() {
-            const container = document.getElementById('quizContainer');
-            document.getElementById('quizSection').style.display = 'block';
-            container.innerHTML = "";
-            for(let i=0; i<5; i++) {
-                container.innerHTML += `
-                    <div class="quiz-q">
-                        <p>سؤال ${i+1}: بناءً على الدرس، اختر الإجابة الصحيحة:</p>
-                        <select id="ans${i}">
-                            <option value="">اختر إجابة...</option>
-                            <option value="0">الاختيار الأول</option>
-                            <option value="1">الاختيار الثاني</option>
-                            <option value="2">الاختيار الثالث</option>
-                        </select>
-                    </div>`;
+                output.innerHTML = `<div class="error-msg">⚠️ ${e.message}</div>`;
+                badge.innerText = "فشل الاتصال ❌";
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "ابدأ التحليل الشامل ⚡";
             }
         }
 
-        function calculateFinalScore() {
-            let score = 0;
-            for(let i=0; i<5; i++) {
-                if(document.getElementById(`ans${i}`).value == correctAnswers[i]) score++;
-            }
-            const percent = (score / 5) * 100;
-            showResultPopup(percent);
-        }
-
-        function showResultPopup(percent) {
-            const area = document.getElementById('quizResultArea');
-            const scoreText = document.getElementById('scorePercent');
-            const msg = document.getElementById('motivationalMessage');
-            const emoji = document.getElementById('resultEmoji');
-            area.style.display = 'block';
-            
-            if (percent === 0) {
-                scoreText.innerText = "";
-                msg.innerText = "متستناش درجه يخايب 🤬";
-                emoji.innerText = "🤬";
-            } else {
-                scoreText.innerText = `درجتك: ${percent}%`;
-                if(percent >= 85) { msg.innerText = "عاش عليك ❤️💪"; emoji.innerText = "🏆"; }
-                else if(percent >= 75) { msg.innerText = "شاطر 😍"; emoji.innerText = "⭐"; }
-                else if(percent >= 50) { msg.innerText = "عندك احسن من كده 👍"; emoji.innerText = "📈"; }
-                else { msg.innerText = "محتاج تذاكر اكتر 🫠"; emoji.innerText = "🫠"; }
-            }
-            area.scrollIntoView({ behavior: 'smooth' });
-        }
-
+        // قراءة PDF
         document.getElementById('pdfFile').addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
