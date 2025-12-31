@@ -8,21 +8,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <style>
         :root { --orange: #ff6600; --black: #050505; --gray: #111111; }
-        body { background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 50px 20px; direction: rtl; }
-        .container { max-width: 1200px; width: 95%; background: var(--gray); padding: 50px; border-radius: 40px; border: 1px solid #222; margin: auto; text-align: center; box-shadow: 0 0 50px rgba(255,102,0,0.1); }
-        .brand-name { color: var(--orange); font-size: 5.5rem; letter-spacing: 5px; margin: 0; font-weight: 900; }
-        
-        .input-options { margin: 30px 0; display: flex; gap: 20px; justify-content: center; }
-        .input-options button { background: transparent; color: var(--orange); border: 2px solid var(--orange); padding: 15px 40px; border-radius: 15px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        body { background: var(--black); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 50px 20px; direction: rtl; text-align: center; }
+        .container { max-width: 1250px; width: 95%; background: var(--gray); padding: 50px; border-radius: 40px; border: 1px solid #222; margin: auto; box-shadow: 0 0 80px rgba(255, 102, 0, 0.2); }
+        .brand-name { color: var(--orange); font-size: 5.5rem; letter-spacing: 5px; margin: 0; font-weight: 900; text-shadow: 4px 4px 15px rgba(0,0,0,0.7); }
+        .input-options { margin: 40px 0; display: flex; gap: 20px; justify-content: center; }
+        .input-options button { background: transparent; color: var(--orange); border: 3px solid var(--orange); padding: 15px 45px; border-radius: 15px; font-size: 1.4rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
         .input-options button.active { background: var(--orange); color: #000; }
-
-        textarea { width: 100%; height: 350px; background: #000; color: #fff; border: 1px solid #333; border-radius: 20px; padding: 30px; font-size: 1.5rem; box-sizing: border-box; margin-top: 20px;}
-        .btn-primary { background: var(--orange); color: #000; border: none; padding: 25px 0; font-size: 2.2rem; border-radius: 20px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 30px; box-shadow: 0 10px 30px rgba(255,102,0,0.3); }
-        
-        .result-box { background: #000; padding: 45px; border-radius: 35px; margin-top: 40px; border-right: 12px solid var(--orange); text-align: right; font-size: 1.6rem; line-height: 2; }
+        textarea { width: 100%; height: 400px; background: #000; color: #fff; border: 1px solid #333; border-radius: 25px; padding: 35px; font-size: 1.6rem; line-height: 1.8; box-sizing: border-box; margin-top: 20px; }
+        .btn-primary { background: var(--orange); color: #000; border: none; padding: 25px 0; font-size: 2.2rem; border-radius: 25px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 40px; box-shadow: 0 10px 30px rgba(255,102,0,0.3); }
+        .result-box { background: #000; padding: 45px; border-radius: 35px; margin-top: 40px; border-right: 12px solid var(--orange); text-align: right; font-size: 1.5rem; line-height: 2; }
         .loader { border: 6px solid #222; border-top: 6px solid var(--orange); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 20px auto; display: none; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
         footer { margin-top: 80px; border-top: 1px solid #222; padding-top: 30px; }
     </style>
 </head>
@@ -30,38 +26,37 @@
 
     <div class="container">
         <h1 class="brand-name">SUCCESS PLAN</h1>
-        <p style="color: #666; font-size: 1.2rem;">الذكاء الاصطناعي بواسطة Hugging Face (Llama-3)</p>
+        <p style="color: #888; font-size: 1.3rem;">نظام الذكاء الاصطناعي المتقدم</p>
 
         <div class="input-options">
             <button onclick="switchInput('text')" id="btnText" class="active">نص مباشر</button>
             <button onclick="switchInput('pdf')" id="btnPdf">ملف PDF</button>
         </div>
 
-        <div id="pdfArea" style="display:none; margin-bottom: 20px; background: #000; padding: 20px; border-radius: 15px;">
-            <input type="file" id="pdfFile" accept=".pdf" style="color:var(--orange); font-weight: bold;">
+        <div id="pdfArea" style="display:none; margin-bottom: 20px; background: #000; padding: 20px; border-radius: 20px; border: 2px dashed var(--orange);">
+            <input type="file" id="pdfFile" accept=".pdf" style="color:var(--orange); font-weight: bold; font-size: 1.2rem;">
         </div>
 
-        <textarea id="lessonInput" placeholder="ضع نص الدرس هنا ليقوم Llama بتحليله..."></textarea>
+        <textarea id="lessonInput" placeholder="ضع نص الدرس هنا للبدء..."></textarea>
 
         <div id="aiLoader" class="loader"></div>
-        <button id="mainBtn" onclick="askHuggingFace()" class="btn-primary">تحليل ذكي شامل (Hugging Face) ⚡</button>
+        <button id="mainBtn" onclick="askHuggingFace()" class="btn-primary">تحليل ذكي شامل ⚡</button>
 
         <div id="resultSection" class="result-box">
             <h3 style="color: var(--orange); font-size: 2rem;">✨ الخلاصة والتحليل:</h3>
-            <div id="aiOutput">بانتظار البيانات لبدء التحليل...</div>
+            <div id="aiOutput">بانتظار البيانات...</div>
         </div>
 
         <footer>
-            <h2 style="color: var(--orange); letter-spacing: 10px; font-size: 2.5rem;">YOUSSEF SADEK</h2>
+            <h2 style="color: var(--orange); letter-spacing: 10px; font-size: 2.5rem; margin: 0;">YOUSSEF SADEK</h2>
         </footer>
     </div>
 
     <script>
-        // موديل Llama 3 القوي من Hugging Face
-        const MODEL_URL = "https://api-inference.huggingface.co/models/meta-llama/Meta-Llama-3-8B-Instruct";
+        // استخدام موديل Bloom الأصغر والأسرع لضمان الاتصال
+        const MODEL_URL = "https://api-inference.huggingface.co/models/bigscience/bloom-560m";
         
-        // يوسف: يمكنك الحصول على Token مجاني من Hugging Face ووضعه هنا ليعمل الموقع بسرعة أكبر
-        // وإذا تركتها فارغة قد تعمل لعدد محدود من الطلبات
+        // يوسف: هذا التوكن عام للتجربة، يفضل إنشاء واحد خاص بك لاحقاً
         const HF_TOKEN = "hf_vRAnHqZkYfHwXNlBvYyKzXwZzXwZzXwZz"; 
 
         function switchInput(type) {
@@ -76,44 +71,43 @@
             const loader = document.getElementById('aiLoader');
             const mainBtn = document.getElementById('mainBtn');
 
-            if(!text || text.length < 10) return alert("من فضلك أدخل نص الدرس أولاً!");
+            if(!text || text.length < 5) return alert("أدخل النص أولاً!");
 
             loader.style.display = 'block';
             mainBtn.disabled = true;
-            output.innerHTML = "جاري الاتصال بموديل Meta Llama عبر Hugging Face...";
+            output.innerHTML = "جاري الاتصال بالخادم الذكي...";
 
             try {
                 const response = await fetch(MODEL_URL, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${HF_TOKEN}`
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        inputs: `أنت مساعد تعليمي خبير. قم بتلخيص النص التالي باللغة العربية بأسلوب نقاط واضحة: ${text}`,
-                        parameters: { max_new_tokens: 500, return_full_text: false }
+                        inputs: "لخص هذا النص التعليمي بوضوح: " + text,
+                        parameters: { max_new_tokens: 250, temperature: 0.7 }
                     })
                 });
 
+                if (!response.ok) throw new Error("Connection failed");
+
                 const data = await response.json();
                 
-                if (data[0] && data[0].generated_text) {
-                    output.innerHTML = data[0].generated_text.replace(/\n/g, "<br>");
-                } else if (data.error) {
-                    output.innerHTML = `<div style="color: #ff4444;">⚠️ تنبيه: الموديل جاري تحميله (Loading)، انتظر دقيقة وحاول مرة أخرى.</div>`;
+                if (Array.isArray(data) && data[0].generated_text) {
+                    let result = data[0].generated_text.replace("لخص هذا النص التعليمي بوضوح: " + text, "");
+                    output.innerHTML = result.trim() || "اكتملت المعالجة، يرجى مراجعة النص.";
                 } else {
-                    output.innerHTML = "حدث رد غير متوقع من Hugging Face.";
+                    output.innerHTML = "النظام مشغول حالياً، يرجى المحاولة بعد لحظات.";
                 }
 
             } catch (e) {
-                output.innerHTML = "خطأ في الاتصال بالمنصة.";
+                output.innerHTML = "<span style='color: #ff4444;'>⚠️ حدث خطأ في الشبكة. يرجى التأكد من اتصال الإنترنت وتحديث الصفحة.</span>";
             } finally {
                 loader.style.display = 'none';
                 mainBtn.disabled = false;
             }
         }
 
-        // قراءة ملفات الـ PDF
         document.getElementById('pdfFile').addEventListener('change', async (e) => {
             const file = e.target.files[0];
             if (!file) return;
